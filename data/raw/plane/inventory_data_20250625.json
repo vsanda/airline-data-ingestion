@@ -1,0 +1,82 @@
+[
+  {
+    "aircraft_id": "N85403",
+    "model": "A320",
+    "manufacturer": "Boeing",
+    "capacity": 147,
+    "status": "retired",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N84870",
+    "model": "B787",
+    "manufacturer": "Boeing",
+    "capacity": 133,
+    "status": "maintenance",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N40417",
+    "model": "B737",
+    "manufacturer": "Boeing",
+    "capacity": 144,
+    "status": "active",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N15162",
+    "model": "A320",
+    "manufacturer": "Boeing",
+    "capacity": 341,
+    "status": "retired",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N27973",
+    "model": "B787",
+    "manufacturer": "Boeing",
+    "capacity": 170,
+    "status": "retired",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N34334",
+    "model": "B787",
+    "manufacturer": "Airbus",
+    "capacity": 160,
+    "status": "maintenance",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N32107",
+    "model": "A320",
+    "manufacturer": "Boeing",
+    "capacity": 298,
+    "status": "maintenance",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N82039",
+    "model": "A320",
+    "manufacturer": "Boeing",
+    "capacity": 308,
+    "status": "active",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N26586",
+    "model": "A350",
+    "manufacturer": "Airbus",
+    "capacity": 265,
+    "status": "active",
+    "date": "2025-06-25"
+  },
+  {
+    "aircraft_id": "N70924",
+    "model": "B787",
+    "manufacturer": "Airbus",
+    "capacity": 326,
+    "status": "active",
+    "date": "2025-06-25"
+  }
+]

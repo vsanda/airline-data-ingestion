@@ -1,0 +1,137 @@
+[
+  {
+    "airport_code": "OWG",
+    "name": "Amytown International Airport",
+    "city": "Williamsburgh",
+    "country": "Yemen",
+    "timezone": "Australia/Melbourne",
+    "elevation_ft": 5283,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "XTO",
+    "name": "West Benjamin International Airport",
+    "city": "East Karenside",
+    "country": "Hungary",
+    "timezone": "Europe/London",
+    "elevation_ft": 8254,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "TBY",
+    "name": "New Ashleytown International Airport",
+    "city": "West Kaitlyn",
+    "country": "Cote d'Ivoire",
+    "timezone": "Europe/Lisbon",
+    "elevation_ft": 4077,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "OCJ",
+    "name": "Reynoldsburgh International Airport",
+    "city": "Munozview",
+    "country": "Djibouti",
+    "timezone": "America/La_Paz",
+    "elevation_ft": 3319,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "UJO",
+    "name": "New Karen International Airport",
+    "city": "Kevinstad",
+    "country": "Seychelles",
+    "timezone": "Africa/Nouakchott",
+    "elevation_ft": 7223,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "ZJB",
+    "name": "Blevinsburgh International Airport",
+    "city": "South Kimberly",
+    "country": "Cuba",
+    "timezone": "Africa/Harare",
+    "elevation_ft": 4811,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "XCI",
+    "name": "Shannonhaven International Airport",
+    "city": "South Saraberg",
+    "country": "Bosnia and Herzegovina",
+    "timezone": "Europe/Moscow",
+    "elevation_ft": 960,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "XOG",
+    "name": "Lyonsmouth International Airport",
+    "city": "North Jeffreyshire",
+    "country": "Marshall Islands",
+    "timezone": "Asia/Beirut",
+    "elevation_ft": 934,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "PBT",
+    "name": "Nolanshire International Airport",
+    "city": "Mortonview",
+    "country": "Turkmenistan",
+    "timezone": "Pacific/Port_Moresby",
+    "elevation_ft": 8392,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "QSW",
+    "name": "Murphyberg International Airport",
+    "city": "Ashleeview",
+    "country": "Kazakhstan",
+    "timezone": "Africa/Bangui",
+    "elevation_ft": 5560,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "CKR",
+    "name": "South Seanmouth International Airport",
+    "city": "New Heather",
+    "country": "Saint Pierre and Miquelon",
+    "timezone": "America/Antigua",
+    "elevation_ft": 3593,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "FNC",
+    "name": "North Amber International Airport",
+    "city": "Hernandezberg",
+    "country": "Argentina",
+    "timezone": "Asia/Bangkok",
+    "elevation_ft": 2422,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "IEA",
+    "name": "New Nathan International Airport",
+    "city": "Griffinland",
+    "country": "Portugal",
+    "timezone": "America/Lima",
+    "elevation_ft": 5257,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "ACS",
+    "name": "Khanmouth International Airport",
+    "city": "Robertfurt",
+    "country": "Kyrgyz Republic",
+    "timezone": "Europe/Prague",
+    "elevation_ft": 4623,
+    "date": "2025-06-25"
+  },
+  {
+    "airport_code": "CTG",
+    "name": "Sloanborough International Airport",
+    "city": "Samuelhaven",
+    "country": "Malaysia",
+    "timezone": "Africa/Sao_Tome",
+    "elevation_ft": 3385,
+    "date": "2025-06-25"
+  }
+]

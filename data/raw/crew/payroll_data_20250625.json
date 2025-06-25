@@ -1,0 +1,162 @@
+[
+  {
+    "crew_id": "5dee66c2-18ee-470a-9a72-7f3a9faf2d8f",
+    "name": "Amanda Miller",
+    "role": "Pilot",
+    "hours_logged": 78,
+    "monthly_salary": 124892.85,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "c9bd5de6-ee75-46f1-964a-fffe4d688cac",
+    "name": "Trevor Huffman",
+    "role": "Pilot",
+    "hours_logged": 73,
+    "monthly_salary": 120630.4,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "a7204a98-7f18-46b9-9040-900ec3f02f9f",
+    "name": "David Owens",
+    "role": "Pilot",
+    "hours_logged": 148,
+    "monthly_salary": 123858.55,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "404f3c94-a0e0-44b6-9130-c8089ad8cc26",
+    "name": "Jessica Gilbert",
+    "role": "Co-Pilot",
+    "hours_logged": 148,
+    "monthly_salary": 90311.26,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "1ccae847-9859-4936-bc55-7c82501818d5",
+    "name": "Gregory Henry",
+    "role": "Co-Pilot",
+    "hours_logged": 175,
+    "monthly_salary": 87286.07,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "73ac4be3-ba6c-4d85-997b-a7f7a6ee626e",
+    "name": "Chad Townsend",
+    "role": "Flight Attendant",
+    "hours_logged": 76,
+    "monthly_salary": 56962.76,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "5631c2d0-2533-4aec-8022-4775fa3ef5b6",
+    "name": "Michael Moran",
+    "role": "Pilot",
+    "hours_logged": 123,
+    "monthly_salary": 124018.69,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "dcbe496c-a3ac-4bfe-9d69-1d1b02821a4d",
+    "name": "Monica Noble",
+    "role": "Pilot",
+    "hours_logged": 108,
+    "monthly_salary": 118695.94,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "259ac151-0f78-44f2-99f7-27198ce57e2d",
+    "name": "Erica Smith",
+    "role": "Pilot",
+    "hours_logged": 88,
+    "monthly_salary": 117956.46,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "407f8f99-f26c-4aef-9c96-7b2f50b60162",
+    "name": "Brittany Brown MD",
+    "role": "Flight Attendant",
+    "hours_logged": 132,
+    "monthly_salary": 58002.99,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "469d74e6-ef03-4932-983d-99191cd7034e",
+    "name": "Steve Rivera",
+    "role": "Co-Pilot",
+    "hours_logged": 193,
+    "monthly_salary": 90597.18,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "006c9a1c-b125-459d-bd68-a271a1c5e855",
+    "name": "Michael Gutierrez",
+    "role": "Co-Pilot",
+    "hours_logged": 175,
+    "monthly_salary": 93704.1,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "3fa8dcf6-8ff1-4767-be2b-07e791231b91",
+    "name": "Jeremy Taylor",
+    "role": "Flight Attendant",
+    "hours_logged": 147,
+    "monthly_salary": 57329.22,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "5c76812f-f575-4458-b856-c349998b50e0",
+    "name": "Daniel Sims",
+    "role": "Pilot",
+    "hours_logged": 187,
+    "monthly_salary": 124326.6,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "543e1892-c0b7-423f-918f-aeff08d045cf",
+    "name": "Brian Baker",
+    "role": "Flight Attendant",
+    "hours_logged": 150,
+    "monthly_salary": 62714.57,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "c2b1c6f6-de07-4e00-a4b0-b1751b13313a",
+    "name": "Hunter Baker",
+    "role": "Pilot",
+    "hours_logged": 147,
+    "monthly_salary": 117003.8,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "d7e17069-e4a8-43f6-bcb3-4725b6796d9e",
+    "name": "Ashley Dougherty",
+    "role": "Flight Attendant",
+    "hours_logged": 131,
+    "monthly_salary": 58103.54,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "db77217a-4f60-4f9b-b14c-771ab66d3fbd",
+    "name": "Cathy Garcia",
+    "role": "Co-Pilot",
+    "hours_logged": 134,
+    "monthly_salary": 85455.19,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "24066720-6c1a-4191-bc1b-6255482e8ff0",
+    "name": "Marcus Mcknight",
+    "role": "Flight Attendant",
+    "hours_logged": 110,
+    "monthly_salary": 60705.82,
+    "date": "2025-06-25"
+  },
+  {
+    "crew_id": "ef35a226-cdb0-4b63-a13c-cc54455f7e38",
+    "name": "Lisa Dean",
+    "role": "Pilot",
+    "hours_logged": 80,
+    "monthly_salary": 120557.94,
+    "date": "2025-06-25"
+  }
+]

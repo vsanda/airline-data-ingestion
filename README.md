@@ -1,68 +1,104 @@
 # ✈️ Data Ingestion Module – Airline Supply Chain Project
 
-This module handles ingestion of raw operational data for a simulated airline supply chain analytics pipeline. The focus is on integrating multiple data sources into a unified data lake (or staging layer) for downstream processing.
+This module handles ingestion of raw operational data for a simulated airline supply chain analytics pipeline. It integrates both real and synthetic data sources into a PostgreSQL staging layer for downstream transformation and basic P/L modeling (via dbt, Airflow, Apache superset, etc).
 
 ## Ingested Datasets
 
-| Dataset           | Source Type         | Description                                                                |
-|------------------|---------------------|-----------------------------------------------------------------------------|
-| `flights.csv`     | Simulated / CSV     | Historical flight-level data (carrier, delay, distance, etc.)              |
-| `fuel_prices.csv` | API (EIA) + Faker   | Monthly jet fuel and crude oil spot prices by region                       |
-| `supplier_logs.csv` | Simulated / JSON  | Fuel supplier delivery and refill events (used for SLA/risk tracking)      |
+| Dataset             | Source Type         | Frequency   | Description |
+|---------------------|---------------------|-------------|-------------|
+| `flights`           | OpenSky / Simulated | Daily       | Historical flight-level data (carrier, delay, distance, etc.) |
+| `crude_oil_prices`  | EIA API + Faker     | Daily       | Jet fuel and crude oil spot prices by region                  |
+| `supplier_logs`     | Simulated / JSON    | Daily       | Fuel supplier delivery and refill events for SLA tracking     |
+| `plane_inventory`   | Simulated / Faker   | Weekly      | Aircraft metadata: model, capacity, maintenance flags         |
+| `passenger_bookings`| Simulated / Faker   | Daily       | Ticket-level booking data: route, price, passenger ID         |
+| `crew_payroll`      | Simulated / Faker   | Monthly     | Salaries, hours flown, bonuses, and crew role data            |
+| `airports_metadata` | Public JSON / Faker | Quarterly   | Airport codes, cities, timezones, and regions                 |
 
 ## Features
 
-- Fetches public fuel price data via the [EIA API](https://api.eia.gov/)
-- Falls back to synthetic values using `Faker` when the API lacks granularity
-- Saves all raw outputs as flat files to `data/raw/`
-- Future-ready for orchestration via Airflow pipelines
+- Modular ingestion scripts for each dataset
+- Supports CSV + JSON file formats
+- Graceful fallback to Faker if external APIs are unavailable
+- Raw output saved under `data/raw/` with dates
+- PostgreSQL used as the staging target
+- Future-ready for orchestration via Airflow
 
 ## Folder Structure
 
 ```
 airline-data-ingestion/
 ├── ingest/
-│   ├── fetch_fuel_prices.py
-│   ├── fetch_flight_data.py
-│   ├── fetch_supplier_logs.py
+│   ├── fetch_*.py                # Raw data generation scripts using APIs
+│   ├── generate_*.py             # Raw data generation scripts
+│
+├── loader/
+│   ├── load_fuel.py
+│   ├── load_flights.py
+│   ├── load_suppliers.py
+│   ├── load_planes.py
+│   ├── load_passengers.py
+│   ├── load_payroll.py
+│   └── load_airports.py
+│
+├── utils/                      # Shared functions
+│   ├── load_utils.py            
+│   ├── save_utils.py            
 │
 ├── data/
 │   └── raw/
-│       ├── fuel_prices.csv
-│       ├── flights.csv
-│       └── supplier_logs.csv
+│       ├── fuel/
+│       ├── flights/
+│       ├── suppliers/
+│       ├── planes/
+│       ├── passengers/
+│       ├── payroll/
+│       └── airports/
 ```
 
 ## Usage
 
-Run each ingestion script individually to populate the raw data layer:
+### Ingest raw files:
 
 ```bash
 python ingest/fetch_fuel_prices.py
 python ingest/fetch_flight_data.py
 python ingest/fetch_supplier_logs.py
+# ...plus any synthetic generators for planes, passengers, payroll, airports
 ```
 
-All output files are written to `data/raw/`.
+### Load latest file to PostgreSQL:
 
-## External APIs Used
+```bash
+python loader/load_fuel.py
+python loader/load_flights.py
+python loader/load_suppliers.py
+python loader/load_planes.py
+python loader/load_passengers.py
+python loader/load_payroll.py
+python loader/load_airports.py
+```
 
-- **EIA (U.S. Energy Information Administration)**  
-  **Endpoint**: `https://api.eia.gov/v2/petroleum/pri/rac2/data/`  
-  **Use**: Retrieves monthly jet fuel and crude oil spot prices by region.  
-  **Fallback**: If price values are missing or unavailable, realistic data is generated using `Faker`.
+All tables will be created (or replaced) in the target PostgreSQL database specified in `.env`.
 
-- **OpenSky Network API**  
-  **Use**: Intended for fetching historical or real-time flight-level data.  
-  **Note**: Used for flight simulation, but may be supplemented or replaced with static files depending on rate limits or availability.
+## 🌐 External APIs Used
 
-- **Faker**  
-  **Use**: Simulates synthetic logs for supplier fuel deliveries and SLA events.  
-  **Note**: Used exclusively for generating supplier operational events (JSON format).
+### 🔌 EIA – U.S. Energy Information Administration
 
-## Notes
+- **Endpoint:** https://api.eia.gov/v2/petroleum/pri/rac2/data/
+- **Purpose:** Jet fuel & crude oil price data by region
+- **Fallback:** Uses Faker for synthetic prices when API fails or lacks data
 
-- Jet fuel price data may not always contain price values directly in the EIA response. This module includes graceful degradation logic using Faker to simulate realistic fallback data.
-- All ingested data is designed for learning/demo purposes — not for production or financial use.
-- This module can be integrated into an Airflow DAG or used as a standalone pre-processing stage for analytics modeling.
----
+### ✈️ OpenSky Network API
+
+- **Purpose:** Flight movement simulation (optional, rate-limited)
+- **Fallback:** Static flight data or Faker-based generator for simulation
+
+### 🧪 Faker (Python)
+
+- **Purpose:** Simulates synthetic datasets: suppliers, planes, bookings, payroll, airports
+
+## 📝 Notes
+
+- All data is intended for educational/demo use — not suitable for production or financial reporting.
+- The ingestion system is modular and DAG-friendly. Easily plug each loader script into an Airflow DAG with custom schedules.
+- Dates in filenames support partitioning and time-based loading in future transformations.
