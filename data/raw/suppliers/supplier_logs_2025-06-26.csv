@@ -1,0 +1,13 @@
+order_id,supplier_id,supplier,category,part,order_date,expected_delivery,status,delay_days,cost_usd,flight_id,flight_day,recorded_at
+ORD-44e113c1,SUP-001,AeroParts Inc.,parts,engine valve,2025-06-22,2025-06-29,delayed,3,3462.81,FL9881,2025-07-20,2025-06-26T20:06:48.690964
+ORD-f3908cb8,SUP-002,SkyMeals Co.,meals,veg meal,2025-06-02,2025-07-02,backordered,1,5058.73,FL9881,2025-06-28,2025-06-26T20:06:48.691126
+ORD-6f772627,SUP-002,SkyMeals Co.,meals,veg meal,2025-06-16,2025-07-06,lost,0,17244.95,FL9881,2025-06-27,2025-06-26T20:06:48.691172
+ORD-8ffcbfb4,SUP-002,SkyMeals Co.,tech,radar module,2025-06-16,2025-06-27,on-time,0,5673.21,FL8502,2025-07-23,2025-06-26T20:06:48.691216
+ORD-612eba2d,SUP-002,SkyMeals Co.,meals,snack box,2025-06-08,2025-07-06,backordered,2,12681.29,FL8502,2025-07-02,2025-06-26T20:06:48.691260
+ORD-1c390ad5,SUP-003,FlightTech Solutions,meals,veg meal,2025-06-15,2025-07-01,delayed,2,15872.87,FL0688,2025-07-14,2025-06-26T20:06:48.691305
+ORD-e01b3749,SUP-003,FlightTech Solutions,parts,engine valve,2025-06-07,2025-07-06,lost,0,18924.04,FL0688,2025-07-20,2025-06-26T20:06:48.691347
+ORD-dc7a022e,SUP-003,FlightTech Solutions,tech,nav sensor,2025-06-10,2025-07-08,lost,0,19469.05,FL5581,2025-07-22,2025-06-26T20:06:48.691389
+ORD-a50318e2,SUP-001,AeroParts Inc.,meals,veg meal,2025-06-25,2025-07-05,backordered,4,18323.95,FL5581,2025-07-16,2025-06-26T20:06:48.691429
+ORD-f3337628,SUP-002,SkyMeals Co.,meals,non-veg meal,2025-05-27,2025-06-29,delayed,3,16017.45,FL5581,2025-06-27,2025-06-26T20:06:48.691468
+ORD-ed9c2ea3,SUP-002,SkyMeals Co.,parts,engine valve,2025-05-29,2025-07-03,backordered,5,6284.96,FL2001,2025-06-29,2025-06-26T20:06:48.691509
+ORD-b8a5332e,SUP-002,SkyMeals Co.,tech,radar module,2025-06-05,2025-07-05,lost,0,6114.56,FL2001,2025-07-04,2025-06-26T20:06:48.691547

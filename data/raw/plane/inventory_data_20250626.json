@@ -1,0 +1,202 @@
+[
+  {
+    "aircraft_id": "AC7042",
+    "model": "3",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2018,
+    "capacity": 133,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC8521",
+    "model": "7",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2021,
+    "capacity": 165,
+    "status": "active",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC2105",
+    "model": "A",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2005,
+    "capacity": 236,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC3313",
+    "model": "2",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2013,
+    "capacity": 242,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC3488",
+    "model": "7",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2012,
+    "capacity": 336,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC0944",
+    "model": "5",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2022,
+    "capacity": 239,
+    "status": "maintenance",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC1979",
+    "model": "3",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2014,
+    "capacity": 148,
+    "status": "active",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC7828",
+    "model": "7",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2009,
+    "capacity": 313,
+    "status": "maintenance",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC9519",
+    "model": "7",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2007,
+    "capacity": 129,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC4136",
+    "model": "A",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2009,
+    "capacity": 173,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC2209",
+    "model": "3",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2019,
+    "capacity": 234,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC7607",
+    "model": "7",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2017,
+    "capacity": 157,
+    "status": "maintenance",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC4648",
+    "model": "5",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2006,
+    "capacity": 260,
+    "status": "active",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC2425",
+    "model": "3",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2019,
+    "capacity": 194,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC8332",
+    "model": "3",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2014,
+    "capacity": 259,
+    "status": "retired",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC8801",
+    "model": "3",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2022,
+    "capacity": 256,
+    "status": "maintenance",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC9283",
+    "model": "7",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2010,
+    "capacity": 171,
+    "status": "maintenance",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC8162",
+    "model": "A",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2018,
+    "capacity": 341,
+    "status": "active",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC9440",
+    "model": "8",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2017,
+    "capacity": 162,
+    "status": "maintenance",
+    "date": "2025-06-26"
+  },
+  {
+    "aircraft_id": "AC3877",
+    "model": "8",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2015,
+    "capacity": 182,
+    "status": "active",
+    "date": "2025-06-26"
+  }
+]

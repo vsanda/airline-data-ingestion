@@ -10,3 +10,11 @@ def save_json(data, prefix, name):
     with open(path, "w") as f:
         json.dump(data, f, indent=2)
     print(f"[✓] Saved {len(data)} records to {path}")
+
+def save_keys(data, name):
+    directory = "data/keys"
+    os.makedirs(directory, exist_ok=True)
+    path = f"{directory}/{name}.json"
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2)
+    print(f"[✓] Saved {len(data)} keys to {path}")
