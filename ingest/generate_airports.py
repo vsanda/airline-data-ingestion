@@ -26,11 +26,7 @@ def generate_and_save(n=15):
             "date": datetime.utcnow().strftime("%Y-%m-%d")
         })
 
-    # Save full airport data
     save_json(data, prefix="airports", name="airports_data")
-
-    # Save just the codes as a separate key file
-    save_keys(airport_codes, name="airport_codes")
 
 if __name__ == "__main__":
     generate_and_save()

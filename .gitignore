@@ -2,3 +2,5 @@ venv/
 .env
 .envrc
 .direnv
+__pycache__/
+*.py[cod]

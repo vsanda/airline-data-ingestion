@@ -29,19 +29,26 @@ def generate_price(row):
 def classify_fuel(name):
     name = name.lower()
     if "kerosene" in name or "jet fuel" in name:
-        return "jet_fuel"
+        return "Jet Fuel"
     elif "diesel" in name:
-        return "diesel"
+        return "Diesel"
     elif "gasoline" in name:
-        return "gasoline"
+        return "Gasoline"
     elif "crude" in name or "brent" in name or "wti" in name:
-        return "crude_oil"
+        return "Crude Oil"
     else:
-        return "other"
+        return "Other"
     
 def random_flight_day():
     start_date = datetime.today() - timedelta(days=90)
     return (start_date + timedelta(days=random.randint(0, 90))).date()
+
+def extend_latest_fuel_price(df):
+    latest = df.loc[df["period"] == df["period"].max()].copy()
+    current_month = datetime.today().strftime("%Y-%m")
+    latest["period"] = current_month
+    latest["flight_day"] = f"{current_month}-15"
+    return pd.concat([df, latest], ignore_index=True).sort_values(by="period", ascending=False).reset_index(drop=True)
 
 
 def fetch_fuel_prices():
@@ -55,8 +62,8 @@ def fetch_fuel_prices():
     params = {
         "api_key": EIA_API_KEY,
         "data": ["value"],
-        "start": "2024-01",
-        "end": "2025-01",
+        "start": "2025-01",
+        "end": "2025-06",
         "frequency": "monthly",
         "sort[0][column]": "period",
         "sort[0][direction]": "desc",
@@ -70,6 +77,7 @@ def fetch_fuel_prices():
 
     json_data = response.json()
     records = json_data["response"]["data"]
+
     if not records:
         print("No fuel price data found.")
         return
@@ -78,29 +86,15 @@ def fetch_fuel_prices():
     df = pd.DataFrame(records)
     print(df.head())
 
-    # Define enrichment maps
-    DEFAULT_PRODUCTS = ["EIA-WTI", "EIA-Brent", "EIA-Kerosene"]
-    PRODUCT_NAMES = {
-        "EIA-WTI": "West Texas Intermediate",
-        "EIA-Brent": "Brent Crude",
-        "EIA-Kerosene": "Jet Fuel (Kerosene Blend)"
-    }
-    PROCESS_NAMES = {
-        "refined": "Refined Price",
-        "blended": "Blended Price",
-        "spot": "Spot Price"
-    }
     REGIONS = ["Gulf Coast", "Midwest", "West Coast", "Rocky Mountains"]
 
-    # Map product_name safely
-    df["product"] = np.random.choice(DEFAULT_PRODUCTS, size=len(df))
-    df["product_name"] = df["product"].map(PRODUCT_NAMES).fillna("Unknown Product")
-    df["process_name"] = np.random.choice(list(PROCESS_NAMES.values()), size=len(df))
+    # # Map product_name safely
     df["region"] = np.random.choice(REGIONS, size=len(df))
+    df = extend_latest_fuel_price(df)
     df["price_month"] = pd.to_datetime(df["period"], format="%Y-%m").dt.to_period("M").astype(str)
-    print(df["product_name"])
-    df["price_per_gallon_usd"] = df["product_name"].apply(generate_price)
-    df["fuel_category"] = df["product_name"].apply(classify_fuel)
+    print(df["product-name"])
+    df["price_per_gallon_usd"] = df["product-name"].apply(generate_price)
+    df["fuel_category"] = df["product-name"].apply(classify_fuel)
     df["flight_day"] = [random_flight_day() for _ in range(len(df))]
     print(df.head())
 
@@ -109,7 +103,7 @@ def fetch_fuel_prices():
     output_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_path, index=False)
 
-    print(f"Saved {len(df)} enriched jet fuel price records to {output_path}")
+    print(f"Saved {len(df)} enriched fuel prices records to {output_path}")
     
 if __name__ == "__main__":
     fetch_fuel_prices()

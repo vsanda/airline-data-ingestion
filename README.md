@@ -20,6 +20,7 @@ This module handles ingestion of raw operational data for a simulated airline su
 - Supports CSV + JSON file formats
 - Graceful fallback to Faker if external APIs are unavailable
 - Raw output saved under `data/raw/` with dates
+- Keys saved under `data/keys/` for joined logic
 - PostgreSQL used as the staging target
 - Future-ready for orchestration via Airflow
 

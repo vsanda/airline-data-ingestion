@@ -1,69 +1,85 @@
-from pathlib import Path
-from datetime import datetime, timedelta
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from datetime import datetime
 import pandas as pd
 import os
 import json
 from faker import Faker
 import uuid
 from random import choice, randint, uniform
+from data.static.dim_suppliers import dim_suppliers
+from data.static.dim_flights import dim_flights
+from data.static.dim_aircraft import dim_aircraft
+from utils.save_utils import save_csv
 import random
 
 fake = Faker()
-num_rows = 100  # adjust as needed
 
 print("Simulating supplier logs...")
-
-category_part_map = {
-    "parts": ["engine valve", "landing gear", "hydraulic pump"],
-    "meals": ["veg meal", "non-veg meal", "snack box"],
-    "tech": ["radar module", "nav sensor", "wifi router"]
-}
-
-supplier_list = [
-    {"supplier_id": "SUP-001", "supplier": "AeroParts Inc."},
-    {"supplier_id": "SUP-002", "supplier": "SkyMeals Co."},
-    {"supplier_id": "SUP-003", "supplier": "FlightTech Solutions"}
-]
 
 # Load flight IDs from JSON file
 json_path = os.path.join("data", "keys", "flight_ids.json")
 with open(json_path, "r") as f:
     flight_ids = json.load(f)
 
-supplier_map = {}
-data = []
+dim_flights_df = pd.DataFrame(dim_flights)
+dim_aircraft_df = pd.DataFrame(dim_aircraft)
+merged_df = dim_flights_df.merge(dim_aircraft_df, on='aircraft_id', how='left')
 
-for flight_id in flight_ids:
-    for _ in range(randint(2, 3)):  # 2–3 orders per flight
-        supplier = random.choice(supplier_list)
-        category = random.choice(list(category_part_map.keys()))
-        part = random.choice(category_part_map[category])
-        status = choice(["on-time", "delayed", "lost", "backordered"])
-        delay_days = randint(1, 10) if status in ["delayed", "backordered"] else 0
+def generate_and_save_supply_orders():
+    data = []
 
-        row = {
-            "order_id": "ORD-" + str(uuid.uuid4())[:8],
-            "supplier_id": supplier["supplier_id"],
-            "supplier": supplier["supplier"],
-            "category": category,
-            "part": part,
-            "order_date": fake.date_between(start_date='-30d', end_date='today'),
-            "expected_delivery": fake.date_between(start_date='today', end_date='+15d'),
-            "status": status,
-            "delay_days": delay_days,
-            "cost_usd": round(uniform(500, 20000), 2),
-            "flight_id": flight_id,
-            "flight_day": fake.date_between(start_date='today', end_date='+30d'),
-            "recorded_at": datetime.utcnow().isoformat()
-        }
-        data.append(row)
+    for i, row in merged_df.iterrows():
+        flight_id = row["flight_id"]
+        aircraft_id = row["aircraft_id"]
+        capacity = row["max_capacity"]
+        flight_day = row["flight_day"]  # default fallback
 
-df = pd.DataFrame(data)
-print(df.head())
+        for supplier in dim_suppliers:
+            service_type = supplier["service_type"]
 
-# Save to file
-today = datetime.utcnow().strftime("%Y-%m-%d")
-output_path = Path(f"data/raw/suppliers/supplier_logs_{today}.csv")
-output_path.parent.mkdir(parents=True, exist_ok=True)
-df.to_csv(output_path, index=False)
-print(f"Supplier logs saved to {output_path}")
+            include = (
+                service_type == "Fuel" or
+                (service_type == "Maintenance" and random.random() < 0.3) or
+                (service_type == "Catering" and random.random() < 0.5)
+            )
+
+            if include:
+                status = random.choices(["on-time", "delayed"], weights=[85, 15])[0]
+
+                if service_type == "Fuel":
+                    cost_usd = None  # Leave blank for silver calc
+                elif service_type == "Maintenance":
+                    base_cost = 2000
+                    multiplier = 1.5 if capacity > 200 else 1.0
+                    cost_usd = round(base_cost * multiplier * uniform(0.9, 1.2), 2)
+                elif service_type == "Catering":
+                    per_passenger = uniform(15, 30)
+                    cost_usd = round(per_passenger * capacity * uniform(0.9, 1.1), 2)
+
+                row = {
+                    "order_id": "ORD-" + str(uuid.uuid4())[:8],
+                    "supplier_id": supplier["supplier_id"],
+                    "supplier": supplier["name"],
+                    "service_type": service_type,
+                    "flight_id": flight_id,
+                    "aircraft_id": aircraft_id,
+                    "order_date": fake.date_between(start_date='-30d', end_date='today').isoformat(),
+                    "expected_delivery": fake.date_between(start_date='today', end_date='+15d').isoformat(),
+                    "status": status,
+                    "cost_usd": cost_usd,
+                    "flight_day": flight_day,
+                    "recorded_at": datetime.utcnow().isoformat()
+                }
+
+                data.append(row)
+
+    df = pd.DataFrame(data)
+    print(df.head())
+    save_csv(data, prefix="suppliers", name="supplier_logs")
+
+if __name__ == "__main__":
+    generate_and_save_supply_orders()
+    print("Supplier logs generated successfully!")
