@@ -9,7 +9,7 @@ from utils.load_utils import get_latest_file, load_to_postgres
 load_dotenv()
 engine = create_engine(os.getenv("POSTGRES_URL"))
 
-def main():
+def load_inventory():
     prefix = "plane"
     name = "inventory_data"
     filepath = get_latest_file(prefix, name)
@@ -20,4 +20,4 @@ def main():
     load_to_postgres(filepath, name, engine)
 
 if __name__ == "__main__":
-    main()
+    load_inventory()

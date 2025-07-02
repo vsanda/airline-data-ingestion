@@ -1,0 +1,98 @@
+[
+    {
+        "flight_id": "FL4758",
+        "route_id": "RT7502",
+        "aircraft_id": "AC7432",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T20:00:00",
+        "arrival_time": "2025-06-17T21:27:00",
+        "status": "delayed",
+        "delay_reason": "crew",
+        "delay_minutes": 46,
+        "fixed_cost": 6553.9
+    },
+    {
+        "flight_id": "FL6205",
+        "route_id": "RT5358",
+        "aircraft_id": "AC7432",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T07:30:00",
+        "arrival_time": "2025-06-17T11:11:00",
+        "status": "on-time",
+        "delay_reason": "",
+        "delay_minutes": 0,
+        "fixed_cost": 9253.53
+    },
+    {
+        "flight_id": "FL5193",
+        "route_id": "RT6474",
+        "aircraft_id": "AC7459",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T11:45:00",
+        "arrival_time": "2025-06-17T14:15:00",
+        "status": "delayed",
+        "delay_reason": "supplier",
+        "delay_minutes": 104,
+        "fixed_cost": 7996.88
+    },
+    {
+        "flight_id": "FL2807",
+        "route_id": "RT6259",
+        "aircraft_id": "AC4686",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T20:00:00",
+        "arrival_time": "2025-06-18T03:15:00",
+        "status": "on-time",
+        "delay_reason": "",
+        "delay_minutes": 0,
+        "fixed_cost": 19470.85
+    },
+    {
+        "flight_id": "FL6056",
+        "route_id": "RT4447",
+        "aircraft_id": "AC5682",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T05:45:00",
+        "arrival_time": "2025-06-17T10:42:00",
+        "status": "on-time",
+        "delay_reason": "",
+        "delay_minutes": 0,
+        "fixed_cost": 9759.33
+    },
+    {
+        "flight_id": "FL7524",
+        "route_id": "RT5358",
+        "aircraft_id": "AC9250",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T14:15:00",
+        "arrival_time": "2025-06-17T17:56:00",
+        "status": "on-time",
+        "delay_reason": "",
+        "delay_minutes": 0,
+        "fixed_cost": 8174.66
+    },
+    {
+        "flight_id": "FL9931",
+        "route_id": "RT6565",
+        "aircraft_id": "AC9894",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T13:00:00",
+        "arrival_time": "2025-06-17T15:02:00",
+        "status": "on-time",
+        "delay_reason": "",
+        "delay_minutes": 0,
+        "fixed_cost": 7612.69
+    },
+    {
+        "flight_id": "FL3263",
+        "route_id": "RT5358",
+        "aircraft_id": "AC7421",
+        "flight_day": "2025-06-17",
+        "departure_time": "2025-06-17T13:30:00",
+        "arrival_time": "2025-06-17T17:11:00",
+        "status": "on-time",
+        "delay_reason": "",
+        "delay_minutes": 0,
+        "fixed_cost": 8273.42
+    }
+]
