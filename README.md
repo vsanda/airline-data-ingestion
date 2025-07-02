@@ -11,18 +11,17 @@ This module handles ingestion of raw operational data for a simulated airline su
 | `supplier_logs`     | Simulated / JSON    | Daily       | Fuel supplier delivery and refill events for SLA tracking     |
 | `plane_inventory`   | Simulated / Faker   | Weekly      | Aircraft metadata: model, capacity, maintenance flags         |
 | `passenger_bookings`| Simulated / Faker   | Daily       | Ticket-level booking data: route, price, passenger ID         |
-| `crew_payroll`      | Simulated / Faker   | Monthly     | Salaries, hours flown, bonuses, and crew role data            |
+| `crew_payroll`      | Simulated / Faker   | Daily       | Salaries, hours flown, bonuses, and crew role data            |
 | `airports_metadata` | Public JSON / Faker | Quarterly   | Airport codes, cities, timezones, and regions                 |
 
-## Features
 
-- Modular ingestion scripts for each dataset
-- Supports CSV + JSON file formats
-- Graceful fallback to Faker if external APIs are unavailable
-- Raw output saved under `data/raw/` with dates
-- Keys saved under `data/keys/` for joined logic
-- PostgreSQL used as the staging target
-- Future-ready for orchestration via Airflow
+## Key Updates
+
+- **Trimmed OpenSky to `dim_flights` by `flight_day`** using per-day slicing  
+- Automatically **copies base OpenSky rows per `flight_day`** for flexible sampling  
+- Safely merges external data with simulated `dim_routes` and `dim_aircraft`  
+- PostgreSQL ingestion WIP: staging write via SQLAlchemy or pandas `.to_sql()`  
+- Future-proof for batch or streaming ingestion via Airflow orchestration
 
 ## Folder Structure
 
@@ -54,6 +53,17 @@ airline-data-ingestion/
 │       ├── passengers/
 │       ├── payroll/
 │       └── airports/
+│   └── static/
+│       ├── dim_flights/
+│       ├── dim_aircraft.py
+│       ├── dim_crew.py
+│       ├── dim_routes.py
+│       ├── dim_suppliers.py
+│       ├── generate_dim_aircraft.py
+│       └── generate_dim_crew.py
+│       ├── generate_dim_flights.py
+│       ├── generate_dim_routes.py
+│       └── generate_dim_suppliers.py
 ```
 
 ## Usage
@@ -93,6 +103,7 @@ All tables will be created (or replaced) in the target PostgreSQL database speci
 
 - **Purpose:** Flight movement simulation (optional, rate-limited)
 - **Fallback:** Static flight data or Faker-based generator for simulation
+- Integrated with `dim_flights` per `flight_day`
 
 ### 🧪 Faker (Python)
 
@@ -100,6 +111,7 @@ All tables will be created (or replaced) in the target PostgreSQL database speci
 
 ## 📝 Notes
 
-- All data is intended for educational/demo use — not suitable for production or financial reporting.
-- The ingestion system is modular and DAG-friendly. Easily plug each loader script into an Airflow DAG with custom schedules.
-- Dates in filenames support partitioning and time-based loading in future transformations.
+- All data is non-production and intended for educational/demo use only
+- Dates in filenames support partitioning and future Airflow DAGs
+- PostgreSQL staging layer supports downstream dbt models (bronze, silver, gold)
+- This setup simulates real airline logistics complexity while remaining dev-friendly

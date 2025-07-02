@@ -1,0 +1,167 @@
+[
+  {
+    "aircraft_id": "AC4005",
+    "model": "Boeing 777-300ER",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2006,
+    "capacity": 304,
+    "status": "active",
+    "fuel_efficiency_gph": 1600,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC7833",
+    "model": "Boeing 737-800",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2013,
+    "capacity": 160,
+    "status": "active",
+    "fuel_efficiency_gph": 850,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC2131",
+    "model": "Airbus A321XLR",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2019,
+    "capacity": 206,
+    "status": "active",
+    "fuel_efficiency_gph": 890,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC2648",
+    "model": "Airbus A350-1000",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2005,
+    "capacity": 394,
+    "status": "active",
+    "fuel_efficiency_gph": 1450,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC8207",
+    "model": "Airbus A350-900",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2006,
+    "capacity": 316,
+    "status": "active",
+    "fuel_efficiency_gph": 1350,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC1699",
+    "model": "Boeing 787-9",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2017,
+    "capacity": 264,
+    "status": "active",
+    "fuel_efficiency_gph": 1400,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC6111",
+    "model": "Airbus A320neo",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2018,
+    "capacity": 166,
+    "status": "active",
+    "fuel_efficiency_gph": 790,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC6961",
+    "model": "Boeing 757-200",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2018,
+    "capacity": 185,
+    "status": "active",
+    "fuel_efficiency_gph": 1000,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC3825",
+    "model": "CRJ700",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Regional Jet",
+    "year_built": 2017,
+    "capacity": 73,
+    "status": "active",
+    "fuel_efficiency_gph": 500,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC4244",
+    "model": "Airbus A350-1000",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2017,
+    "capacity": 407,
+    "status": "active",
+    "fuel_efficiency_gph": 1450,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC3813",
+    "model": "Embraer E175",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Regional Jet",
+    "year_built": 2015,
+    "capacity": 75,
+    "status": "active",
+    "fuel_efficiency_gph": 550,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC4904",
+    "model": "Boeing 757-200",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2008,
+    "capacity": 180,
+    "status": "active",
+    "fuel_efficiency_gph": 1000,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC4264",
+    "model": "Airbus A350-1000",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2005,
+    "capacity": 391,
+    "status": "active",
+    "fuel_efficiency_gph": 1450,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC7447",
+    "model": "Airbus A350-1000",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2012,
+    "capacity": 365,
+    "status": "active",
+    "fuel_efficiency_gph": 1450,
+    "date": "2025-06-28"
+  },
+  {
+    "aircraft_id": "AC6799",
+    "model": "Boeing 787-9",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2013,
+    "capacity": 294,
+    "status": "active",
+    "fuel_efficiency_gph": 1400,
+    "date": "2025-06-28"
+  }
+]

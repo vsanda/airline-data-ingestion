@@ -16,7 +16,7 @@ json_path = os.path.join("data", "keys", "aircraft_ids.json")
 with open(json_path, "r") as f:
     aircraft_ids = json.load(f)
 
-def generate_and_save():
+def generate_aircraft():
     data = []
 
     for aircraft in dim_aircraft:
@@ -38,4 +38,4 @@ def generate_and_save():
     save_json(data, prefix="plane", name="inventory_data")
 
 if __name__ == "__main__":
-    generate_and_save()
+    generate_aircraft()

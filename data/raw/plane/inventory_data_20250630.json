@@ -1,0 +1,167 @@
+[
+  {
+    "aircraft_id": "AC7432",
+    "model": "Boeing 737-800",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2006,
+    "capacity": 160,
+    "status": "active",
+    "fuel_efficiency_gph": 850,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC9250",
+    "model": "Boeing 757-200",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2014,
+    "capacity": 199,
+    "status": "active",
+    "fuel_efficiency_gph": 1000,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC4709",
+    "model": "Airbus A350-900",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2017,
+    "capacity": 287,
+    "status": "active",
+    "fuel_efficiency_gph": 1350,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC7421",
+    "model": "Airbus A321XLR",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2013,
+    "capacity": 192,
+    "status": "active",
+    "fuel_efficiency_gph": 890,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC7979",
+    "model": "CRJ700",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Regional Jet",
+    "year_built": 2011,
+    "capacity": 70,
+    "status": "active",
+    "fuel_efficiency_gph": 500,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC5682",
+    "model": "Airbus A320neo",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2013,
+    "capacity": 179,
+    "status": "active",
+    "fuel_efficiency_gph": 790,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC4686",
+    "model": "Airbus A350-900",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2016,
+    "capacity": 307,
+    "status": "active",
+    "fuel_efficiency_gph": 1350,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC8469",
+    "model": "Boeing 777-300ER",
+    "manufacturer": "Boeing",
+    "aircraft_type": "Wide-body",
+    "year_built": 2020,
+    "capacity": 328,
+    "status": "active",
+    "fuel_efficiency_gph": 1600,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC2907",
+    "model": "Airbus A350-900",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2015,
+    "capacity": 323,
+    "status": "active",
+    "fuel_efficiency_gph": 1350,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC4674",
+    "model": "Airbus A350-900",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2022,
+    "capacity": 324,
+    "status": "active",
+    "fuel_efficiency_gph": 1350,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC4266",
+    "model": "Airbus A350-1000",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Wide-body",
+    "year_built": 2014,
+    "capacity": 381,
+    "status": "active",
+    "fuel_efficiency_gph": 1450,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC9894",
+    "model": "Airbus A321XLR",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2010,
+    "capacity": 204,
+    "status": "active",
+    "fuel_efficiency_gph": 890,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC2808",
+    "model": "Airbus A320neo",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2022,
+    "capacity": 171,
+    "status": "active",
+    "fuel_efficiency_gph": 790,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC7608",
+    "model": "Airbus A321XLR",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2019,
+    "capacity": 192,
+    "status": "active",
+    "fuel_efficiency_gph": 890,
+    "date": "2025-06-30"
+  },
+  {
+    "aircraft_id": "AC7459",
+    "model": "Airbus A320neo",
+    "manufacturer": "Airbus",
+    "aircraft_type": "Narrow-body",
+    "year_built": 2019,
+    "capacity": 180,
+    "status": "active",
+    "fuel_efficiency_gph": 790,
+    "date": "2025-06-30"
+  }
+]

@@ -5,6 +5,7 @@ import random
 from pathlib import Path
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import numpy as np
 import json
 
@@ -43,12 +44,20 @@ def random_flight_day():
     start_date = datetime.today() - timedelta(days=90)
     return (start_date + timedelta(days=random.randint(0, 90))).date()
 
-def extend_latest_fuel_price(df):
+def extend_latest_fuel_price(df, months_to_add=2):
     latest = df.loc[df["period"] == df["period"].max()].copy()
-    current_month = datetime.today().strftime("%Y-%m")
-    latest["period"] = current_month
-    latest["flight_day"] = f"{current_month}-15"
-    return pd.concat([df, latest], ignore_index=True).sort_values(by="period", ascending=False).reset_index(drop=True)
+    latest_period = datetime.strptime(latest["period"].iloc[0], "%Y-%m")
+
+    new_rows = []
+    for i in range(1, months_to_add + 1):
+        future_period = latest_period + relativedelta(months=i)
+        row = latest.copy()
+        row["period"] = future_period.strftime("%Y-%m")
+        row["flight_day"] = f"{future_period.strftime('%Y-%m')}-15"
+        new_rows.append(row)
+
+    df_extended = pd.concat([df] + new_rows, ignore_index=True)
+    return df_extended.sort_values(by="period", ascending=False).reset_index(drop=True)
 
 
 def fetch_fuel_prices():
