@@ -1,10 +1,14 @@
-import pandas as pd
+import os
+import json
 import random
 from datetime import datetime, timedelta
-import os
+
+import pandas as pd
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+
 from dim_aircraft import dim_aircraft
 from dim_routes import dim_routes
-import json
 
 # Ensure both dim tables are DataFrames
 aircraft_df = pd.DataFrame(dim_aircraft)
@@ -12,7 +16,10 @@ routes_df = pd.DataFrame(dim_routes)
 
 # Number of synthetic flights
 num_flights = random.randint(8, 12)
-flights = []
+all_flights = []
+
+load_dotenv()
+engine = create_engine(os.getenv("POSTGRES_URL"))
 
 route_category_map = {
     "Short-haul": ["Regional Jet", "Narrow-body"],
@@ -26,30 +33,21 @@ fixed_cost_map = {
     "Wide-body": 8500
 }
 
-# def sample_route_once(routes_df, used_routes, limited_route_id="RT1009"):
-#     for _ in range(10):
-#         route = routes_df.sample(1).iloc[0]
-#         route_id = route["route_id"]
-#         if route_id == limited_route_id and route_id in used_routes:
-#             continue
-#         if route_id == limited_route_id:
-#             used_routes.add(route_id)
-
-#         return route
-#     return None
-
 
 def generate_delay():
     delayed = random.choices([True, False], weights=[0.2, 0.8])[0]  
     if not delayed:
         return False, "", 0
 
-    reason = random.choices(
-        ["crew", "supplier", "weather"],
-        weights=[0.35, 0.45, 0.15]
-    )[0]
+    reason = random.choices(["crew", "supplier", "weather"],weights=[0.35, 0.45, 0.15])[0]
 
-    delay_minutes = random.randint(10, 120) 
+    if reason == "crew":
+        delay_minutes = random.randint(10, 90)
+    elif reason == "weather":
+        delay_minutes = random.randint(30, 240)
+    elif reason == "supplier":
+        delay_minutes = random.randint(5, 45)
+
     return True, reason, delay_minutes
 
 def calculate_fixed_cost(aircraft_type: str, flight_hours: float) -> float:
@@ -64,12 +62,22 @@ def save_daily_flights(flight_day, flights, output_dir="data/static/dim_flights"
     with open(filename, "w") as f:
         json.dump(flights, f, indent=4, default=str)
     print(f"Saved {len(flights)} flights to {filename}")
-        
+
+def save_sample_json(sample_df, output_path="data/static/dim_flights.json"):
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, "w") as f:
+        json.dump(sample_df.to_dict(orient="records"), f, indent=4, default=str)
+    print(f"Saved sample flights to {output_path}")
+
+def save_flights_to_postgres(flights, engine, table_name="dim_flights"):
+    df = pd.DataFrame(flights)
+    df.to_sql(table_name, con=engine, if_exists="append", index=False)
+    print(f"Loaded {len(df)} flights to {table_name} in Postgres")
 
 # Copy aircraft_df so we can remove used aircraft
 available_aircraft = aircraft_df.copy()
 
-for offset in range(30):
+for offset in range(90):
     flight_day = datetime.today().date() - timedelta(days=offset)
     num_flights = random.randint(8, 12)
     daily_flights = []
@@ -125,14 +133,19 @@ for offset in range(30):
             "status": "delayed" if delayed else "on-time",
             "delay_reason": delay_reason,
             "delay_minutes": delay_minutes,
-            "fixed_cost": fixed_cost
+            "fixed_cost": fixed_cost,
+            "ingestion_time": datetime.now().isoformat(),
         })
 
-    save_daily_flights(flight_day, daily_flights)
+    all_flights.extend(daily_flights)
+    # save_daily_flights(flight_day, daily_flights)
 
-# save to a dataframe in python
-# with open("data/static/dim_flights.py", "w") as f:
-#     f.write("dim_flights = ")
-#     json.dump(flights, f, indent=4, default=str)
+print(f"{len(all_flights)} is total flights")
+print(all_flights[0]) 
+sample_df = pd.DataFrame(daily_flights).head(10)
+print(sample_df)
 
-# print(f"Saved {len(flights)} flights.")
+save_sample_json(sample_df)
+save_flights_to_postgres(all_flights, engine)
+
+# print(f"Saved sample {len(sample_df)} flights data to data/static/dim_flights.py.")

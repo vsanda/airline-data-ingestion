@@ -1,0 +1,11 @@
+booking_id,passenger_name,flight_id,aircraft_id,departure_time,seat_number,booking_time,booking_status,ticket_price,baggage_fee,upgrades,channel,customer_segment,aircraft_type,currency,flight_day,recorded_at
+68ccbca9-a8cd-4c63-807d-f4f1e2ee77f7,Barry James,FL3206,AC5517,2025-07-23 04:30:00,08Q,2025-06-24T23:06:00,checked_in,857.11,90.18,150,app,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721216
+0c4bb03b-97b1-4657-b3a3-e7a8337217c6,Mrs. Olivia Hernandez,FL3206,AC5517,2025-07-23 04:30:00,18H,2025-06-24T16:12:00,confirmed,1055.29,90.19,50,app,premium_economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721305
+c4623ead-d590-4b53-93af-b3a8fb7c87c4,Laura Baker,FL3206,AC5517,2025-07-23 04:30:00,21o,2025-06-25T03:20:00,confirmed,899.45,39.22,150,travel_agent,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721377
+db19994f-db17-49be-bc27-dc2ffaa85961,Alice Bean,FL3206,AC5517,2025-07-23 04:30:00,60q,2025-06-24T19:58:00,confirmed,989.88,28.57,100,travel_agent,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721446
+44235fc0-0c05-45f1-8d84-96814bd03f3e,Amanda Wilkins,FL3206,AC5517,2025-07-23 04:30:00,53G,2025-06-24T13:26:00,confirmed,1031.35,38.39,0,travel_agent,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721515
+0acf8a17-6f9c-4661-a494-77e069a5e4dd,Sarah Chandler,FL3206,AC5517,2025-07-23 04:30:00,08m,2025-06-24T18:06:00,checked_in,939.44,63.78,0,website,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721583
+f18e2d2d-c7b5-4ca6-b376-d46ac109fdd0,Beth Lopez,FL3206,AC5517,2025-07-23 04:30:00,94X,2025-06-24T23:29:00,cancelled,822.27,84.6,150,travel_agent,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721654
+4c326f5c-4aff-410b-b953-214503d657c0,Elaine Parker MD,FL3206,AC5517,2025-07-23 04:30:00,69E,2025-06-24T11:10:00,confirmed,1471.79,34.32,0,app,business,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721726
+0b8d0776-3991-4ee0-b2c5-5ddf3c248e80,Dana Murray,FL3206,AC5517,2025-07-23 04:30:00,18f,2025-06-24T22:32:00,confirmed,1043.31,49.23,100,app,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721794
+030cf5e6-2e9c-4acd-a9db-5e533cd31091,Brandon Morgan,FL3206,AC5517,2025-07-23 04:30:00,17W,2025-06-24T12:58:00,confirmed,1032.01,36.73,50,travel_agent,economy,Wide-body,USD,2025-07-23,2025-07-23T19:44:23.721861

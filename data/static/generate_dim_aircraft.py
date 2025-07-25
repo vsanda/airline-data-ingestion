@@ -46,6 +46,6 @@ with open("data/static/dim_aircraft.py", "w") as f:
     f.write("dim_aircraft = ")
     json.dump(aircraft_list, f, indent=4, default=str)
 
-print("Successfully saved dim_aircraft.py")
+print(f"Successfully {num_aircraft} saved dim_aircraft.py")
 
 

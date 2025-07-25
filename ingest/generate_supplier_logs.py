@@ -1,32 +1,44 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from datetime import datetime
-import pandas as pd
-import os
 import json
-from faker import Faker
-import uuid
 import math
+import uuid
+import random
 from random import choice, randint, uniform
 from collections import defaultdict
-from datetime import datetime as dt
-from data.static.dim_suppliers import dim_suppliers
-# from data.static.dim_flights import dim_flights
-from data.static.dim_aircraft import dim_aircraft
+from datetime import datetime
+
+import pandas as pd
+from faker import Faker
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+
+# Project utilities & static data
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from utils.load_utils import load_dim_flights
 from utils.save_utils import save_csv
-import random
+from data.static.dim_suppliers import dim_suppliers
+from data.static.dim_aircraft import dim_aircraft
+
+# Load environment variables
+load_dotenv()
 
 fake = Faker()
-
+engine = create_engine(os.getenv("POSTGRES_URL"))
 print("Simulating supplier logs...")
 
-dim_flights = load_dim_flights()
+def load_flights_from_postgres(engine, table_name="dim_flights"):
+    query = f"SELECT * FROM {table_name}"
+    df = pd.read_sql(query, con=engine)
+    return df
+
+dim_flights = load_flights_from_postgres(engine)
 dim_flights_df = pd.DataFrame(dim_flights)
+print(dim_flights_df.head())
 dim_aircraft_df = pd.DataFrame(dim_aircraft)
 merged_df = dim_flights_df.merge(dim_aircraft_df, on='aircraft_id', how='left')
+
+## save and load to postgres
 
 def save_daily_supply(flight_day, data, output_dir="data/raw/suppliers"):
     os.makedirs(output_dir, exist_ok=True)
@@ -34,6 +46,18 @@ def save_daily_supply(flight_day, data, output_dir="data/raw/suppliers"):
     data = pd.DataFrame(data)
     data.to_csv(filename, index=False)
     print(f"Saved {len(data)} flights to {filename}")
+
+def save_sample_data(sample_df, output_dir="data/raw/suppliers"):
+    os.makedirs(output_dir, exist_ok=True)
+    today = datetime.today()
+    filename = f"{output_dir}/supplier_logs_{today.strftime('%Y%m%d')}.csv"
+    sample_df.to_csv(filename, index=False)
+    print(f"Saved sample {len(sample_df)} suppliers data to {filename}")
+
+def save_supplier_to_postgres(df, engine, table_name="supplier_logs"):
+    df = pd.DataFrame(df)
+    df.to_sql(table_name, con=engine, if_exists="append", index=False)
+    print(f"Loaded {len(df)}  to {table_name} in Postgres")
 
 def generate_supply_orders():
     print("Generating supplier orders...")
@@ -113,15 +137,17 @@ def generate_supply_orders():
 
             data_by_day[flight_day].append(order)
 
-    # Save per day
-    for flight_day, day_data in data_by_day.items():
-        save_daily_supply(flight_day, day_data)
+    # # Save per day
+    # for flight_day, day_data in data_by_day.items():
+    #     save_daily_supply(flight_day, day_data)
 
     all_data = [order for day_orders in data_by_day.values() for order in day_orders]
     df = pd.DataFrame(all_data)
     print(df.head())
-    print("Total cost per flight:", df.groupby("flight_id")["cost_usd"].sum().reset_index(name="total_supplier_cost"))
-    # save_csv(data, prefix="suppliers", name="supplier_logs")
+    print(f"Total supplier logs: {len(all_data)}")
+    sample_df = pd.DataFrame(all_data).head(10)
+    save_sample_data(sample_df)
+    save_supplier_to_postgres(all_data, engine)
 
 if __name__ == "__main__":
     generate_supply_orders()

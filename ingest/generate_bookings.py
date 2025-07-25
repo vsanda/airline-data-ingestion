@@ -11,14 +11,22 @@ import json
 from data.static.dim_aircraft import dim_aircraft
 from utils.load_utils import load_dim_flights
 from utils.save_utils import save_csv
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
 
+engine = create_engine(os.getenv("POSTGRES_URL"))
 fake = Faker()
 
-# dim_flights_df = pd.DataFrame(dim_flights)
-dim_flights = load_dim_flights()
-dim_flights_df = pd.DataFrame(dim_flights)
+def load_flights_from_postgres(engine, table_name="dim_flights"):
+    query = f"SELECT * FROM {table_name}"
+    df = pd.read_sql(query, con=engine)
+    return df
+
+# import directly from postgres
+dim_flights_df = load_flights_from_postgres(engine)
 dim_aircraft_df = pd.DataFrame(dim_aircraft)
 merged_df = dim_flights_df.merge(dim_aircraft_df, on='aircraft_id', how='left')
+print(dim_flights_df.head())
 
 price_ranges = {
     "Regional Jet": (120, 200),
@@ -68,9 +76,19 @@ def save_daily_bookings(flight_day, data, output_dir="data/raw/bookings"):
     os.makedirs(output_dir, exist_ok=True)
     filename = f"{output_dir}/passenger_data_{flight_day.strftime('%Y%m%d')}.csv"
     data.to_csv(filename, index=False)
-    # with open(filename, "w") as f:
-    #     json.dump(data, f, indent=4, default=str)
     print(f"Saved {len(data)} flights to {filename}")
+
+def save_sample_data(sample_df, output_dir="data/raw/bookings"):
+    os.makedirs(output_dir, exist_ok=True)
+    today = datetime.today()
+    filename = f"{output_dir}/passenger_data_{today.strftime('%Y%m%d')}.csv"
+    sample_df.to_csv(filename, index=False)
+    print(f"Saved sample {len(sample_df)} bookings to {filename}")
+
+def save_bookings_to_postgres(df, engine, table_name="passenger_data"):
+    df = pd.DataFrame(df)
+    df.to_sql(table_name, con=engine, if_exists="append", index=False)
+    print(f"Loaded {len(df)} bookings to {table_name} in Postgres")
 
 
 def generate_bookings():
@@ -123,18 +141,21 @@ def generate_bookings():
                 "recorded_at": datetime.utcnow().isoformat()
             })
 
-    #save per day
-    for flight_day, bookings in data_by_day.items():
-        bookings = pd.DataFrame(bookings)
-        save_daily_bookings(flight_day, bookings)
+    # #save per day
+    # for flight_day, bookings in data_by_day.items():
+    #     bookings = pd.DataFrame(bookings)
+    #     save_daily_bookings(flight_day, bookings)
+    
 
     # Print sample stats
     all_data = [b for day_data in data_by_day.values() for b in day_data]
-    df = pd.DataFrame(all_data)
-    avg_price_per_flight = df.groupby("flight_id")["ticket_price"].mean().reset_index(name="avg_ticket_price")
-    print("sample average ticket price:", avg_price_per_flight.head(5))
-    print(df.head())
-    # save_csv(data, prefix="bookings", name="passenger_data")
+    print(f"Total bookings: {len(all_data)}")
+    sample_df = pd.DataFrame(all_data).head(10)
+    save_sample_data(sample_df)
+    # avg_price_per_flight = sample_df["ticket_price"].mean()
+    # print("sample average ticket price:", avg_price_per_flight)
+    print(sample_df.head())
+    save_bookings_to_postgres(all_data, engine)
 
 if __name__ == "__main__":
     generate_bookings()
